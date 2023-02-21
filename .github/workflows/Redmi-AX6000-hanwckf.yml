@@ -170,4 +170,3 @@ jobs:
         #file: ${{ env.FIRMWARE }}/*
         #file_glob: true
         #tag: ${{ steps.tag.outputs.release_tag }}
-        overwrite: true
