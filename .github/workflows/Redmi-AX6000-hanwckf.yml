@@ -98,6 +98,10 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+    
+    - name: Add Custom Settings
+      run: |
+        cp -rf settings/* ./openwrt/
         
     - name: 编译固件
       id: compile
