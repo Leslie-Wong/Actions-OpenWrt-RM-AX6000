@@ -18,8 +18,9 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-#  schedule:
-#    - cron: 0 16 * * *
+        
+  schedule:
+    - cron: 30 22 * * *
 
 permissions:
   contents: write
