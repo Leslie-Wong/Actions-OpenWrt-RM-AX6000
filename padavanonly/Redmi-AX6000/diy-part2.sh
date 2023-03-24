@@ -21,5 +21,5 @@ mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
 rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 ##---------------------------------------------------------
 
-cd package
+cd feeds/packages/lang
 rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang
