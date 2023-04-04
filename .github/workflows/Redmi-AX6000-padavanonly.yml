@@ -27,7 +27,7 @@ permissions:
   id-token: write
   
 env:
-  REPO_URL: https://github.com/lgs2007m/immortalwrtARM
+  REPO_URL: https://github.com/padavanonly/immortalwrtARM
   REPO_BRANCH: mt7986
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: padavanonly/Redmi-AX6000/.config
