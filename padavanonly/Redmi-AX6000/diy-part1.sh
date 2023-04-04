@@ -26,4 +26,4 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-git pull
+
