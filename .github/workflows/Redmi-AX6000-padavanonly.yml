@@ -105,11 +105,14 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         
-    - name: 加载config & DIY_P3_SH
+    - name: 加载 DIY_P3_SH
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P3_SH
         $GITHUB_WORKSPACE/$DIY_P3_SH
+        
+    - name: 加载config
+      run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         
     - name: Add Custom Settings
       run: |
