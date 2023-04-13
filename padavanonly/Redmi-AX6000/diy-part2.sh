@@ -21,9 +21,10 @@ mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
 rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 ##---------------------------------------------------------
 
-cd feeds/packages/lang
+cd $GITHUB_WORKSPACE/openwrt/feeds/packages/lang
 rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang
 
-cd openwrt/feeds/luci/applications
+cd $GITHUB_WORKSPACE/openwrt/feeds/luci/applications
 rm -rf luci-app-passwall
 git clone https://github.com/Leslie-Wong/luci-app-passwall.git
+
