@@ -24,6 +24,10 @@ rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 cd $GITHUB_WORKSPACE/openwrt/feeds/packages/lang
 rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang
 
+cd $GITHUB_WORKSPACE/openwrt/feeds/packages/net
+rm -rf brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks microsocks naiveproxy pdnsd-alt shadowsocks-rust shadowsocksr-libev simple-obfs sing-box ssocks tcping trojan-go trojan-plus trojan v2ray-core v2ray-geodata v2ray-plugin xray-core xray-plugin
+rm -rf $GITHUB_WORKSPACE/openwrt/feeds/luci/applications/luci-app-passwall
+
 cd $GITHUB_WORKSPACE/openwrt/feeds/kenzo
 rm -rf luci-app-passwall
 git clone https://github.com/Leslie-Wong/luci-app-passwall.git
