@@ -29,9 +29,9 @@ rm -rf brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks microsocks naiv
 rm -rf $GITHUB_WORKSPACE/openwrt/feeds/luci/applications/luci-app-passwall
 
 cd $GITHUB_WORKSPACE/openwrt/feeds/luci/applications
-git clone https://github.com/Leslie-Wong/luci-app-passwall.git
+#git clone https://github.com/Leslie-Wong/luci-app-passwall.git
 
 cd $GITHUB_WORKSPACE/openwrt/feeds/kenzo
 rm -rf luci-app-passwall
-#git clone https://github.com/Leslie-Wong/luci-app-passwall.git
+git clone https://github.com/Leslie-Wong/luci-app-passwall.git
 
