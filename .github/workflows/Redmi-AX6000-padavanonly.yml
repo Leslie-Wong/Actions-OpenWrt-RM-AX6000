@@ -120,7 +120,7 @@ jobs:
     
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh2 == 'true' && github.event.inputs.ssh2  != 'false') || contains(github.event.action, 'ssh2')
+      if: (github.event.inputs.ssh2 == 'true' && github.event.inputs.ssh2  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
