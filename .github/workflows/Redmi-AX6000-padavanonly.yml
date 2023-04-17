@@ -83,12 +83,15 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
       
-    - name: 加载config & DIY_P2_SH
+    - name: DIY_P2_SH
       run: |
-        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        
+    - name: 加载config
+      run: |
+        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
