@@ -18,6 +18,11 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+      ssh2:
+        description: 'SSH2 connection to Actions'
+        required: false
+        default: 'false'
+        
   schedule:
     - cron: 33 22 * * *
 
@@ -112,6 +117,13 @@ jobs:
     - name: Add Custom Settings
       run: |
         cp -rf settings/* ./openwrt/
+    
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh2 == 'true' && github.event.inputs.ssh2  != 'false') || contains(github.event.action, 'ssh2')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         
     - name: 编译固件
       id: compile
