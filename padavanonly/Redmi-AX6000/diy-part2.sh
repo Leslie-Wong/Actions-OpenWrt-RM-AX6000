@@ -27,8 +27,9 @@ rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.
 cd $GITHUB_WORKSPACE/openwrt/feeds/packages/net
 rm -rf brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks microsocks naiveproxy pdnsd-alt shadowsocks-rust shadowsocksr-libev simple-obfs sing-box ssocks tcping trojan-go trojan-plus trojan v2raya v2ray-core v2ray-geodata v2ray-plugin xray-core xray-plugin
 rm -rf $GITHUB_WORKSPACE/openwrt/feeds/luci/applications/luci-app-passwall
+mv small/* $GITHUB_WORKSPACE/openwrt/feeds/packages/net
+rm -rf small
 git clone https://github.com/kenzok8/small.git
-mv small $GITHUB_WORKSPACE/openwrt/feeds/packages/net
 
 cd $GITHUB_WORKSPACE/openwrt/feeds/luci/applications
 git clone https://github.com/Leslie-Wong/luci-app-passwall.git
