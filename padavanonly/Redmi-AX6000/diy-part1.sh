@@ -13,8 +13,8 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i 's/packages.git;openwrt-18.06/packages.git/' feeds.conf.default
+sed -i 's/luci.git;openwrt-18.06-k5.4/luci.git/' feeds.conf.default
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
