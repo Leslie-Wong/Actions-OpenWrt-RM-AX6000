@@ -24,17 +24,19 @@ rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 cd $GITHUB_WORKSPACE/openwrt/feeds/packages/lang
 rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang
 
-cd $GITHUB_WORKSPACE/openwrt/feeds/packages/net
-rm -rf brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks microsocks naiveproxy pdnsd-alt shadowsocks-rust shadowsocksr-libev simple-obfs sing-box ssocks tcping trojan-go trojan-plus trojan v2raya v2ray-core v2ray-geodata v2ray-plugin xray-core xray-plugin
-rm -rf $GITHUB_WORKSPACE/openwrt/feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git
-mv openwrt-passwall/* $GITHUB_WORKSPACE/openwrt/feeds/packages/net
-rm -rf openwrt-passwall
+# cd $GITHUB_WORKSPACE/openwrt/feeds/packages/net
+# rm -rf brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks microsocks naiveproxy pdnsd-alt shadowsocks-rust shadowsocksr-libev simple-obfs sing-box ssocks tcping trojan-go trojan-plus trojan v2raya v2ray-core v2ray-geodata v2ray-plugin xray-core xray-plugin
+# rm -rf $GITHUB_WORKSPACE/openwrt/feeds/luci/applications/luci-app-passwall
+# git clone https://github.com/xiaorouji/openwrt-passwall.git
+# mv openwrt-passwall/* $GITHUB_WORKSPACE/openwrt/feeds/packages/net
+# rm -rf openwrt-passwall
 
-cd $GITHUB_WORKSPACE/openwrt/feeds/luci/applications
-git clone https://github.com/Leslie-Wong/luci-app-passwall.git
+# cd $GITHUB_WORKSPACE/openwrt/feeds/luci/applications
+# git clone https://github.com/Leslie-Wong/luci-app-passwall.git
 
-cd $GITHUB_WORKSPACE/openwrt/feeds/kenzo
-rm -rf luci-app-passwall
-#git clone https://github.com/Leslie-Wong/luci-app-passwall.git
+# cd $GITHUB_WORKSPACE/openwrt/feeds/kenzo
+# rm -rf luci-app-passwall
+# #git clone https://github.com/Leslie-Wong/luci-app-passwall.git
 
+./scripts/feeds install -a -f -p PWpackages
+./scripts/feeds install luci-app-passwall
