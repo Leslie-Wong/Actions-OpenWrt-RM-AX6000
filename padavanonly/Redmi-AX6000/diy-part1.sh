@@ -20,6 +20,8 @@ sed -i 's/luci.git;openwrt-18.06-k5.4/luci.git;openwrt-21.02/' feeds.conf.defaul
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 echo 'src-git messense https://github.com/messense/aliyundrive-webdav' >>feeds.conf.default
 
+echo "$(feeds.conf.default)"
+
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 
