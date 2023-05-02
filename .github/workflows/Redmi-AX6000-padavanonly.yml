@@ -40,6 +40,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  UPLOAD_COWTRANSFER: true
+  UPLOAD_WETRANSFER: true
+  REMOVE_OLD_RELEASE: true
   ###############改名字##############
   OPENWRT_NAME: padavanonly
 
@@ -136,6 +139,38 @@ jobs:
     - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
+      
+    - name: Zip files
+      run: |
+        mkdir upload_files
+        cd openwrt/bin
+        tar -zcvf ../../upload_files/packages_${{ env.FILE_DATE }}.tar.gz packages
+        tar -zcvf ../../upload_files/targets_${{ env.FILE_DATE }}.tar.gz targets
+        cp -rf targets/* ../../upload_files
+        cd $GITHUB_WORKSPACE/upload_files
+        echo "UPLOADFILES=$PWD" >> $GITHUB_ENV
+        
+    - name: Upload firmware to cowtransfer
+      id: cowtransfer
+      if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer cow --block 2621440 -s -p 64 --no-progress upload_files 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
+        
+    - name: Upload firmware to WeTransfer
+      id: wetransfer
+      if: env.UPLOAD_WETRANSFER == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wet -s -p 16 --no-progress upload_files 2>&1 | tee wetransfer.log
+        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
+        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
+        
+    - name: Remove upload file
+      run: |
+        rm -rf upload_files
 
     - name: 整理文件并重命名
       id: organize
@@ -176,3 +211,12 @@ jobs:
         name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
+        
+    - name: Remove old Release
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.REMOVE_OLD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 5
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.OPENWRT_TOKEN }}
