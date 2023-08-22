@@ -18,6 +18,9 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 echo 'src-git messense https://github.com/messense/aliyundrive-webdav' >>feeds.conf.default
 
+rm -rf feeds/packages/lang/golang/golang
+svn co https://github.com/openwrt/packages/branches/openwrt-23.05/lang/golang/golang feeds/packages/lang/golang/golang
+
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 
