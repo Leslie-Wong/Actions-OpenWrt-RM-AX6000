@@ -20,3 +20,6 @@ mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
 mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
 rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 ##---------------------------------------------------------
+
+rm -rf $GITHUB_WORKSPACE/openwrt/feeds/packages/lang/golang/golang
+svn co https://github.com/openwrt/packages/branches/openwrt-23.05/lang/golang/golang $GITHUB_WORKSPACE/openwrt/feeds/packages/lang/golang/golang
