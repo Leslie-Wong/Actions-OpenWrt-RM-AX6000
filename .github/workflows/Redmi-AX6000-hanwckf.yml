@@ -108,6 +108,8 @@ jobs:
     - name: Add Custom Settings
       run: |
         cp -rf settings/* ./openwrt/
+        export GOPROXY=https://goproxy.io
+        export GO111MODULE=on
         
     - name: 编译固件
       id: compile
