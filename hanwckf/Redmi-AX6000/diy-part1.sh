@@ -23,3 +23,6 @@ find ./ | grep Makefile | grep mosdns | xargs rm -f
 
 git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+export GOPROXY=https://goproxy.io
+export GO111MODULE=on
